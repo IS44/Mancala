@@ -12,15 +12,15 @@ namespace ISMancalaV1
 {
     public partial class Form1 : Form
     {
-        
+
         public Form1()
         {
-            
+
 
             InitializeComponent();
 
-            int [,] iSpot = new int[2, 6];
-            for(int i=0; i<6; i++)
+            int[,] iSpot = new int[2, 6];
+            for (int i = 0; i < 6; i++)
             {
                 iSpot[1, i] = 4;
                 iSpot[0, i] = 4;
@@ -49,17 +49,17 @@ namespace ISMancalaV1
                 }
             }
 
-            for(int i=0;i<2;i++)
+            for (int i = 0; i < 2; i++)
             {
                 var pb = new PictureBox();
-                pb.Name = "pictureBox" +11+""+ i;
+                pb.Name = "pictureBox" + 11 + "" + i;
                 pb.Tag = "turn" + i;
                 int x = 445;
                 int y = 330 + 60 * i;
                 pb.Location = new Point(x, y);
                 pb.SizeMode = PictureBoxSizeMode.StretchImage;
                 pb.BorderStyle = BorderStyle.None;
-                if(i==0)
+                if (i == 0)
                 {
                     pb.Image = global::ISMancalaV1.Properties.Resources.Playerturn;
                 }
@@ -70,48 +70,47 @@ namespace ISMancalaV1
                 this.Controls.Add(pb);
 
             }
-            for(int i=0; i<2;i++)
+
+            for (int j = 0; j < 2; j++)
             {
-                for(int j=0;j<2;j++)
-                {
 
-                    var pb = new PictureBox();
-                    pb.Name = "pictureBox" + i + "" + j;
-                    pb.Tag = "points" + i + "" + j;
-                    int x = 20 +870 * i;
-                    int y = 70 + 70 * j;
-                    pb.Location = new Point(x, y);
-                    pb.SizeMode = PictureBoxSizeMode.StretchImage;
-                    pb.BorderStyle = BorderStyle.None;
-                    pb.Image = global::ISMancalaV1.Properties.Resources.blank;
-                    this.Controls.Add(pb);
-                    
+                var pb = new PictureBox();
+                pb.Name = "pictureBox" + "" + j;
+                pb.Tag = "points" + j;
+                int x = 20 + 870 * j;
+                int y = 90;
+                pb.Location = new Point(x, y);
+                pb.SizeMode = PictureBoxSizeMode.StretchImage;
+                pb.BorderStyle = BorderStyle.None;
+                pb.Image = global::ISMancalaV1.Properties.Resources.blank;
+                this.Controls.Add(pb);
 
-                }
+
             }
-                
-     
-            
+
+
+
+
             void pictureBox_Click(object sender, EventArgs e)
             {
                 PictureBox pb = (PictureBox)sender;
                 int y = int.Parse("" + pb.Tag.ToString()[0]);
                 int x = int.Parse("" + pb.Tag.ToString()[1]);
-                if(board.turn==true&&y==1 || board.turn==false&&y==0)
+                if (board.turn == true && y == 1 || board.turn == false && y == 0)
                 {
                     board.Movement(x, y);
                 }
-             
-                
+
+
 
                 if (board.playerPoints > 24)
                 {
-                    MessageBox.Show("The 1st player has won");
+                    MessageBox.Show("The 1st player had: " + board.playerPoints + "points and has won, the 2nd player had: " + board.pcPoints + " points");
                     board.restartBoard();
                 }
                 if (board.pcPoints > 24)
                 {
-                    MessageBox.Show("The 2nd player has won");
+                    MessageBox.Show("The 2nd player had: "+board.pcPoints+"points and has won, the 1st player had: "+board.playerPoints+" points");
                     board.restartBoard();
                 }
 
@@ -121,11 +120,11 @@ namespace ISMancalaV1
                 {
                     if (c.GetType().Name == "PictureBox")
                     {
-                        
-                       if(c.Tag.Equals("turn1"))
+
+                        if (c.Tag.Equals("turn1"))
                         {
                             PictureBox turn = (PictureBox)c;
-                            if(board.turn==true)
+                            if (board.turn == true)
                             {
                                 turn.Image = global::ISMancalaV1.Properties.Resources.green;
                             }
@@ -137,9 +136,9 @@ namespace ISMancalaV1
 
                         if (c.Tag.Equals("00"))
                         {
-                            
+
                             PictureBox picBox = (PictureBox)c;
-                            if(board.itemsInSpot[0,0]==0)
+                            if (board.itemsInSpot[0, 0] == 0)
                             {
                                 picBox.Image = null;
                             }
@@ -1389,365 +1388,228 @@ namespace ISMancalaV1
                                 picBox12.Image = global::ISMancalaV1.Properties.Resources.twentyfour;
                             }
                         }
-                        if(c.Tag.Equals("points00"))
+                        if (c.Tag.Equals("points0"))
                         {
-                            PictureBox points00 = (PictureBox)c;
+                            PictureBox points0 = (PictureBox)c;
                             if (board.playerPoints == 0)
                             {
-                                points00.Image = global::ISMancalaV1.Properties.Resources.blank;
+                                points0.Image = global::ISMancalaV1.Properties.Resources.blank;
                             }
                             if (board.playerPoints == 1)
                             {
-                                points00.Image = global::ISMancalaV1.Properties.Resources.oneBall;
+                                points0.Image = global::ISMancalaV1.Properties.Resources.oneBall;
                             }
                             if (board.playerPoints == 2)
                             {
-                                points00.Image = global::ISMancalaV1.Properties.Resources.twoBall;
+                                points0.Image = global::ISMancalaV1.Properties.Resources.twoBall;
                             }
                             if (board.playerPoints == 3)
                             {
-                                points00.Image = global::ISMancalaV1.Properties.Resources.threeball;
+                                points0.Image = global::ISMancalaV1.Properties.Resources.threeball;
                             }
                             if (board.playerPoints == 4)
                             {
-                                points00.Image = global::ISMancalaV1.Properties.Resources.fourball;
+                                points0.Image = global::ISMancalaV1.Properties.Resources.fourball;
                             }
                             if (board.playerPoints == 5)
                             {
-                                points00.Image = global::ISMancalaV1.Properties.Resources.fiveball;
+                                points0.Image = global::ISMancalaV1.Properties.Resources.fiveball;
                             }
                             if (board.playerPoints == 6)
                             {
-                                points00.Image = global::ISMancalaV1.Properties.Resources.six;
+                                points0.Image = global::ISMancalaV1.Properties.Resources.six;
                             }
                             if (board.playerPoints == 7)
                             {
-                                points00.Image = global::ISMancalaV1.Properties.Resources.seven;
+                                points0.Image = global::ISMancalaV1.Properties.Resources.seven;
                             }
                             if (board.playerPoints == 8)
                             {
-                                points00.Image = global::ISMancalaV1.Properties.Resources.eight;
+                                points0.Image = global::ISMancalaV1.Properties.Resources.eight;
                             }
                             if (board.playerPoints == 9)
                             {
-                                points00.Image = global::ISMancalaV1.Properties.Resources.nine;
+                                points0.Image = global::ISMancalaV1.Properties.Resources.nine;
                             }
                             if (board.playerPoints == 10)
                             {
-                                points00.Image = global::ISMancalaV1.Properties.Resources.ten;
+                                points0.Image = global::ISMancalaV1.Properties.Resources.ten;
                             }
                             if (board.playerPoints == 11)
                             {
-                                points00.Image = global::ISMancalaV1.Properties.Resources.eleven;
+                                points0.Image = global::ISMancalaV1.Properties.Resources.eleven;
                             }
                             if (board.playerPoints == 12)
                             {
-                                points00.Image = global::ISMancalaV1.Properties.Resources.twelve;
+                                points0.Image = global::ISMancalaV1.Properties.Resources.twelve;
                             }
                             if (board.playerPoints == 13)
                             {
-                                points00.Image = global::ISMancalaV1.Properties.Resources.thirteen;
+                                points0.Image = global::ISMancalaV1.Properties.Resources.thirteen;
                             }
                             if (board.playerPoints == 14)
                             {
-                                points00.Image = global::ISMancalaV1.Properties.Resources.fourteen;
+                                points0.Image = global::ISMancalaV1.Properties.Resources.fourteen;
                             }
                             if (board.playerPoints == 15)
                             {
-                                points00.Image = global::ISMancalaV1.Properties.Resources.fifteen;
+                                points0.Image = global::ISMancalaV1.Properties.Resources.fifteen;
                             }
                             if (board.playerPoints == 16)
                             {
-                                points00.Image = global::ISMancalaV1.Properties.Resources.sixteen;
+                                points0.Image = global::ISMancalaV1.Properties.Resources.sixteen;
                             }
                             if (board.playerPoints == 17)
                             {
-                                points00.Image = global::ISMancalaV1.Properties.Resources.seventeen;
+                                points0.Image = global::ISMancalaV1.Properties.Resources.seventeen;
                             }
                             if (board.playerPoints == 18)
                             {
-                                points00.Image = global::ISMancalaV1.Properties.Resources.eighteen;
+                                points0.Image = global::ISMancalaV1.Properties.Resources.eighteen;
                             }
                             if (board.playerPoints == 19)
                             {
-                                points00.Image = global::ISMancalaV1.Properties.Resources.nineteen;
+                                points0.Image = global::ISMancalaV1.Properties.Resources.nineteen;
                             }
                             if (board.playerPoints == 20)
                             {
-                                points00.Image = global::ISMancalaV1.Properties.Resources.twenty;
+                                points0.Image = global::ISMancalaV1.Properties.Resources.twenty;
                             }
                             if (board.playerPoints == 21)
                             {
-                                points00.Image = global::ISMancalaV1.Properties.Resources.twentyone;
+                                points0.Image = global::ISMancalaV1.Properties.Resources.twentyone;
                             }
                             if (board.playerPoints == 22)
                             {
-                                points00.Image = global::ISMancalaV1.Properties.Resources.twentytwo;
+                                points0.Image = global::ISMancalaV1.Properties.Resources.twentytwo;
                             }
                             if (board.playerPoints == 23)
                             {
-                                points00.Image = global::ISMancalaV1.Properties.Resources.twentythree;
+                                points0.Image = global::ISMancalaV1.Properties.Resources.twentythree;
                             }
                             if (board.playerPoints == 24)
                             {
-                                points00.Image = global::ISMancalaV1.Properties.Resources.twentyfour;
+                                points0.Image = global::ISMancalaV1.Properties.Resources.twentyfour;
                             }
                             if (board.playerPoints == 24)
                             {
-                                points00.Image = global::ISMancalaV1.Properties.Resources.twentyfour;
-                            }
-
-                        }
-                        if (c.Tag.Equals("points01"))
-                        {
-                            PictureBox points01 = (PictureBox)c;
-
-                            if (board.playerPoints == 25)
-                            {
-                                points01.Image = global::ISMancalaV1.Properties.Resources.oneBall;
-                            }
-                            if (board.playerPoints == 26)
-                            {
-                                points01.Image = global::ISMancalaV1.Properties.Resources.twoBall;
-                            }
-                            if (board.playerPoints == 27)
-                            {
-                                points01.Image = global::ISMancalaV1.Properties.Resources.threeball;
-                            }
-                            if (board.playerPoints == 28)
-                            {
-                                points01.Image = global::ISMancalaV1.Properties.Resources.fourball;
-                            }
-                            if (board.playerPoints == 29)
-                            {
-                                points01.Image = global::ISMancalaV1.Properties.Resources.fiveball;
-                            }
-                            if (board.playerPoints == 30)
-                            {
-                                points01.Image = global::ISMancalaV1.Properties.Resources.six;
-                            }
-                            if (board.playerPoints == 31)
-                            {
-                                points01.Image = global::ISMancalaV1.Properties.Resources.seven;
-                            }
-                            if (board.playerPoints == 32)
-                            {
-                                points01.Image = global::ISMancalaV1.Properties.Resources.eight;
-                            }
-                            if (board.playerPoints == 33)
-                            {
-                                points01.Image = global::ISMancalaV1.Properties.Resources.nine;
-                            }
-                            if (board.playerPoints == 34)
-                            {
-                                points01.Image = global::ISMancalaV1.Properties.Resources.ten;
-                            }
-                            if (board.playerPoints == 35)
-                            {
-                                points01.Image = global::ISMancalaV1.Properties.Resources.eleven;
-                            }
-                            if (board.playerPoints == 36)
-                            {
-                                points01.Image = global::ISMancalaV1.Properties.Resources.twelve;
-                            }
-                            if (board.playerPoints == 37)
-                            {
-                                points01.Image = global::ISMancalaV1.Properties.Resources.thirteen;
-                            }
-                            if (board.playerPoints == 38)
-                            {
-                                points01.Image = global::ISMancalaV1.Properties.Resources.fourteen;
-                            }
-                            if (board.playerPoints == 39)
-                            {
-                                points01.Image = global::ISMancalaV1.Properties.Resources.fifteen;
-                            }
-                            if (board.playerPoints == 40)
-                            {
-                                points01.Image = global::ISMancalaV1.Properties.Resources.sixteen;
-                            }
-
-                        }
-
-                        if(c.Tag.Equals("points10"))
-                        {
-                            PictureBox points10 = (PictureBox)c;
-                            if (board.pcPoints == 0)
-                            {
-                                points10.Image = global::ISMancalaV1.Properties.Resources.blank;
-                            }
-                            if (board.pcPoints == 1)
-                            {
-                                points10.Image = global::ISMancalaV1.Properties.Resources.oneBall;
-                            }
-                            if (board.pcPoints == 2)
-                            {
-                                points10.Image = global::ISMancalaV1.Properties.Resources.twoBall;
-                            }
-                            if (board.pcPoints == 3)
-                            {
-                                points10.Image = global::ISMancalaV1.Properties.Resources.threeball;
-                            }
-                            if (board.pcPoints == 4)
-                            {
-                                points10.Image = global::ISMancalaV1.Properties.Resources.fourball;
-                            }
-                            if (board.pcPoints == 5)
-                            {
-                                points10.Image = global::ISMancalaV1.Properties.Resources.fiveball;
-                            }
-                            if (board.pcPoints == 6)
-                            {
-                                points10.Image = global::ISMancalaV1.Properties.Resources.six;
-                            }
-                            if (board.pcPoints == 7)
-                            {
-                                points10.Image = global::ISMancalaV1.Properties.Resources.seven;
-                            }
-                            if (board.pcPoints == 8)
-                            {
-                                points10.Image = global::ISMancalaV1.Properties.Resources.eight;
-                            }
-                            if (board.pcPoints == 9)
-                            {
-                                points10.Image = global::ISMancalaV1.Properties.Resources.nine;
-                            }
-                            if (board.pcPoints == 10)
-                            {
-                                points10.Image = global::ISMancalaV1.Properties.Resources.ten;
-                            }
-                            if (board.pcPoints == 11)
-                            {
-                                points10.Image = global::ISMancalaV1.Properties.Resources.eleven;
-                            }
-                            if (board.pcPoints == 12)
-                            {
-                                points10.Image = global::ISMancalaV1.Properties.Resources.twelve;
-                            }
-                            if (board.pcPoints == 13)
-                            {
-                                points10.Image = global::ISMancalaV1.Properties.Resources.thirteen;
-                            }
-                            if (board.pcPoints == 14)
-                            {
-                                points10.Image = global::ISMancalaV1.Properties.Resources.fourteen;
-                            }
-                            if (board.pcPoints == 15)
-                            {
-                                points10.Image = global::ISMancalaV1.Properties.Resources.fifteen;
-                            }
-                            if (board.pcPoints == 16)
-                            {
-                                points10.Image = global::ISMancalaV1.Properties.Resources.sixteen;
-                            }
-                            if (board.pcPoints == 17)
-                            {
-                                points10.Image = global::ISMancalaV1.Properties.Resources.seventeen;
-                            }
-                            if (board.pcPoints == 18)
-                            {
-                                points10.Image = global::ISMancalaV1.Properties.Resources.eighteen;
-                            }
-                            if (board.pcPoints == 19)
-                            {
-                                points10.Image = global::ISMancalaV1.Properties.Resources.nineteen;
-                            }
-                            if (board.pcPoints == 20)
-                            {
-                                points10.Image = global::ISMancalaV1.Properties.Resources.twenty;
-                            }
-                            if (board.pcPoints == 21)
-                            {
-                                points10.Image = global::ISMancalaV1.Properties.Resources.twentyone;
-                            }
-                            if (board.pcPoints == 22)
-                            {
-                                points10.Image = global::ISMancalaV1.Properties.Resources.twentytwo;
-                            }
-                            if (board.pcPoints == 23)
-                            {
-                                points10.Image = global::ISMancalaV1.Properties.Resources.twentythree;
-                            }
-                            if (board.pcPoints == 24)
-                            {
-                                points10.Image = global::ISMancalaV1.Properties.Resources.twentyfour;
-                            }
-                            
-                        }
-                        if(c.Tag.Equals("points11"))
-                        {
-                            PictureBox points11 = (PictureBox)c;
-                            if (board.pcPoints == 25)
-                            {
-                                points11.Image = global::ISMancalaV1.Properties.Resources.oneBall;
-                            }
-                            if (board.pcPoints == 26)
-                            {
-                                points11.Image = global::ISMancalaV1.Properties.Resources.twoBall;
-                            }
-                            if (board.pcPoints == 27)
-                            {
-                                points11.Image = global::ISMancalaV1.Properties.Resources.threeball;
-                            }
-                            if (board.pcPoints == 28)
-                            {
-                                points11.Image = global::ISMancalaV1.Properties.Resources.fourball;
-                            }
-                            if (board.pcPoints == 29)
-                            {
-                                points11.Image = global::ISMancalaV1.Properties.Resources.fiveball;
-                            }
-                            if (board.pcPoints == 30)
-                            {
-                                points11.Image = global::ISMancalaV1.Properties.Resources.six;
-                            }
-                            if (board.pcPoints == 31)
-                            {
-                                points11.Image = global::ISMancalaV1.Properties.Resources.seven;
-                            }
-                            if (board.pcPoints == 32)
-                            {
-                                points11.Image = global::ISMancalaV1.Properties.Resources.eight;
-                            }
-                            if (board.pcPoints == 33)
-                            {
-                                points11.Image = global::ISMancalaV1.Properties.Resources.nine;
-                            }
-                        
-                            if (board.pcPoints == 34)
-                            {
-                            points11.Image = global::ISMancalaV1.Properties.Resources.ten;
-                            }
-                            if (board.pcPoints == 35)
-                            {
-                                points11.Image = global::ISMancalaV1.Properties.Resources.eleven;
-                            }
-                            if (board.pcPoints == 36)
-                            {
-                                points11.Image = global::ISMancalaV1.Properties.Resources.twelve;
-                            }
-                            if (board.pcPoints == 37)
-                            {
-                                points11.Image = global::ISMancalaV1.Properties.Resources.thirteen;
-                            }
-                            if (board.pcPoints == 38)
-                            {
-                                points11.Image = global::ISMancalaV1.Properties.Resources.fourteen;
-                            }
-                            if (board.pcPoints == 39)
-                            {
-                                points11.Image = global::ISMancalaV1.Properties.Resources.fifteen;
-                            }
-                            if (board.pcPoints == 40)
-                            {
-                                points11.Image = global::ISMancalaV1.Properties.Resources.sixteen;
+                                points0.Image = global::ISMancalaV1.Properties.Resources.twentyfour;
                             }
                         }
-                            
+
+
+                            if (c.Tag.Equals("points1"))
+                            {
+                                PictureBox points1 = (PictureBox)c;
+
+                                if (board.pcPoints == 0)
+                                {
+                                    points1.Image = global::ISMancalaV1.Properties.Resources.blank;
+                                }
+                                if (board.pcPoints == 1)
+                                {
+                                    points1.Image = global::ISMancalaV1.Properties.Resources.oneBall;
+                                }
+                                if (board.pcPoints == 2)
+                                {
+                                    points1.Image = global::ISMancalaV1.Properties.Resources.twoBall;
+                                }
+                                if (board.pcPoints == 3)
+                                {
+                                    points1.Image = global::ISMancalaV1.Properties.Resources.threeball;
+                                }
+                                if (board.pcPoints == 4)
+                                {
+                                    points1.Image = global::ISMancalaV1.Properties.Resources.fourball;
+                                }
+                                if (board.pcPoints == 5)
+                                {
+                                    points1.Image = global::ISMancalaV1.Properties.Resources.fiveball;
+                                }
+                                if (board.pcPoints == 6)
+                                {
+                                    points1.Image = global::ISMancalaV1.Properties.Resources.six;
+                                }
+                                if (board.pcPoints == 7)
+                                {
+                                    points1.Image = global::ISMancalaV1.Properties.Resources.seven;
+                                }
+                                if (board.pcPoints == 8)
+                                {
+                                    points1.Image = global::ISMancalaV1.Properties.Resources.eight;
+                                }
+                                if (board.pcPoints == 9)
+                                {
+                                    points1.Image = global::ISMancalaV1.Properties.Resources.nine;
+                                }
+                                if (board.pcPoints == 10)
+                                {
+                                    points1.Image = global::ISMancalaV1.Properties.Resources.ten;
+                                }
+                                if (board.pcPoints == 11)
+                                {
+                                    points1.Image = global::ISMancalaV1.Properties.Resources.eleven;
+                                }
+                                if (board.pcPoints == 12)
+                                {
+                                    points1.Image = global::ISMancalaV1.Properties.Resources.twelve;
+                                }
+                                if (board.pcPoints == 13)
+                                {
+                                    points1.Image = global::ISMancalaV1.Properties.Resources.thirteen;
+                                }
+                                if (board.pcPoints == 14)
+                                {
+                                    points1.Image = global::ISMancalaV1.Properties.Resources.fourteen;
+                                }
+                                if (board.pcPoints == 15)
+                                {
+                                    points1.Image = global::ISMancalaV1.Properties.Resources.fifteen;
+                                }
+                                if (board.pcPoints == 16)
+                                {
+                                    points1.Image = global::ISMancalaV1.Properties.Resources.sixteen;
+                                }
+                                if (board.pcPoints == 17)
+                                {
+                                    points1.Image = global::ISMancalaV1.Properties.Resources.seventeen;
+                                }
+                                if (board.pcPoints == 18)
+                                {
+                                    points1.Image = global::ISMancalaV1.Properties.Resources.eighteen;
+                                }
+                                if (board.pcPoints == 19)
+                                {
+                                    points1.Image = global::ISMancalaV1.Properties.Resources.nineteen;
+                                }
+                                if (board.pcPoints == 20)
+                                {
+                                    points1.Image = global::ISMancalaV1.Properties.Resources.twenty;
+                                }
+                                if (board.pcPoints == 21)
+                                {
+                                    points1.Image = global::ISMancalaV1.Properties.Resources.twentyone;
+                                }
+                                if (board.pcPoints == 22)
+                                {
+                                    points1.Image = global::ISMancalaV1.Properties.Resources.twentytwo;
+                                }
+                                if (board.pcPoints == 23)
+                                {
+                                    points1.Image = global::ISMancalaV1.Properties.Resources.twentythree;
+                                }
+                                if (board.pcPoints == 24)
+                                {
+                                    points1.Image = global::ISMancalaV1.Properties.Resources.twentyfour;
+                                }
+
+                            }
+                        }
+
                     }
                 }
 
-                
+
 
 
 
@@ -1755,4 +1617,5 @@ namespace ISMancalaV1
             }
         }
     }
-}
+
+
