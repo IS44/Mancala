@@ -1,0 +1,10 @@
+C:\Users\Itai\source\repos\ISMancalaV1\ISMancalaV1\bin\Debug\ISMancalaV1.exe.config
+C:\Users\Itai\source\repos\ISMancalaV1\ISMancalaV1\bin\Debug\ISMancalaV1.exe
+C:\Users\Itai\source\repos\ISMancalaV1\ISMancalaV1\bin\Debug\ISMancalaV1.pdb
+C:\Users\Itai\source\repos\ISMancalaV1\ISMancalaV1\obj\Debug\ISMancalaV1.csprojAssemblyReference.cache
+C:\Users\Itai\source\repos\ISMancalaV1\ISMancalaV1\obj\Debug\ISMancalaV1.Form1.resources
+C:\Users\Itai\source\repos\ISMancalaV1\ISMancalaV1\obj\Debug\ISMancalaV1.Properties.Resources.resources
+C:\Users\Itai\source\repos\ISMancalaV1\ISMancalaV1\obj\Debug\ISMancalaV1.csproj.GenerateResource.cache
+C:\Users\Itai\source\repos\ISMancalaV1\ISMancalaV1\obj\Debug\ISMancalaV1.csproj.CoreCompileInputs.cache
+C:\Users\Itai\source\repos\ISMancalaV1\ISMancalaV1\obj\Debug\ISMancalaV1.exe
+C:\Users\Itai\source\repos\ISMancalaV1\ISMancalaV1\obj\Debug\ISMancalaV1.pdb
